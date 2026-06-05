@@ -1,0 +1,394 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "Hi! My name is [Wanxing Dai].\nThis is my customized Quarto website for class.\n\n\n\nData analysis\nAI tools\nLearning Quarto and Markdown\n\n\n\n\nI want to use Quarto to make websites and presentations more easily.\n\n\n\nThis website was created using Quarto. I customized the theme, layout, and content beyond the basic template shown in class."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#my-interests",
+    "href": "index.html#my-interests",
+    "title": "Welcome",
+    "section": "",
+    "text": "Data analysis\nAI tools\nLearning Quarto and Markdown"
+  },
+  {
+    "objectID": "index.html#a-small-goal",
+    "href": "index.html#a-small-goal",
+    "title": "Welcome",
+    "section": "",
+    "text": "I want to use Quarto to make websites and presentations more easily."
+  },
+  {
+    "objectID": "index.html#why-i-built-this-site",
+    "href": "index.html#why-i-built-this-site",
+    "title": "Welcome",
+    "section": "",
+    "text": "This website was created using Quarto. I customized the theme, layout, and content beyond the basic template shown in class."
+  },
+  {
+    "objectID": "index.html#research-question",
+    "href": "index.html#research-question",
+    "title": "Spotify Streaming Behavior",
+    "section": "Research Question",
+    "text": "Research Question\nWhat drives Spotify streaming behavior?\n\nWhich songs are most popular?\nWhich songs create the strongest engagement?\nWhen are listeners most active?\nWhat can marketers learn from streaming data?"
+  },
+  {
+    "objectID": "index.html#why-this-matters",
+    "href": "index.html#why-this-matters",
+    "title": "What Drives Spotify Streaming Behavior?",
+    "section": "Why This Matters",
+    "text": "Why This Matters\nStreaming is not only music consumption.\nIt is also behavioral data.\nFor artists, labels, and platforms, listening data can help answer:\n\nWhich songs should be promoted?\nWhen should campaigns be launched?\nWhich songs create deeper engagement?\nHow do fans behave after releases?"
+  },
+  {
+    "objectID": "index.html#dataset-overview",
+    "href": "index.html#dataset-overview",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Dataset Overview",
+    "text": "Dataset Overview\n\n\n\n27,005\n\nStreams\n\n\n308\n\nTracks\n\n\n1348.3\n\nListening Hours\n\nKey variables\n\nTrack name\nAlbum name\nRelease year\nListening duration\nDay and hour of listening"
+  },
+  {
+    "objectID": "index.html#top-artists",
+    "href": "index.html#top-artists",
+    "title": "What Drives Spotify Streaming Behavior?",
+    "section": "Top Artists",
+    "text": "Top Artists"
+  },
+  {
+    "objectID": "index.html#most-streamed-songs",
+    "href": "index.html#most-streamed-songs",
+    "title": "Spotify Streaming Behavior",
+    "section": "Most Streamed Songs",
+    "text": "Most Streamed Songs\n\nInsight: Stream count reflects popularity and repeat listening."
+  },
+  {
+    "objectID": "index.html#engagement-listening-hours",
+    "href": "index.html#engagement-listening-hours",
+    "title": "Spotify Streaming Behavior",
+    "section": "Engagement: Listening Hours",
+    "text": "Engagement: Listening Hours\n\nInsight: Listening hours measure depth of engagement."
+  },
+  {
+    "objectID": "index.html#popularity-vs.-engagement",
+    "href": "index.html#popularity-vs.-engagement",
+    "title": "Spotify Streaming Behavior",
+    "section": "Popularity vs. Engagement",
+    "text": "Popularity vs. Engagement\n\n\nPopularity\nMeasured by:\n\nStreams\n\nShows how often listeners return to a song.\n\nEngagement\nMeasured by:\n\nListening Time\n\nShows how much attention a song earns.\n\nKey idea\nThe most popular songs are not always the most engaging songs."
+  },
+  {
+    "objectID": "index.html#listening-by-day-of-week",
+    "href": "index.html#listening-by-day-of-week",
+    "title": "What Drives Spotify Streaming Behavior?",
+    "section": "Listening by Day of Week",
+    "text": "Listening by Day of Week"
+  },
+  {
+    "objectID": "index.html#listening-by-hour",
+    "href": "index.html#listening-by-hour",
+    "title": "What Drives Spotify Streaming Behavior?",
+    "section": "Listening by Hour",
+    "text": "Listening by Hour\n\nMarketing Insight\nIf listening activity peaks at predictable hours, promotional content should be timed around those moments."
+  },
+  {
+    "objectID": "index.html#album-performance",
+    "href": "index.html#album-performance",
+    "title": "What Drives Spotify Streaming Behavior?",
+    "section": "Album Performance",
+    "text": "Album Performance"
+  },
+  {
+    "objectID": "index.html#average-listening-duration",
+    "href": "index.html#average-listening-duration",
+    "title": "What Drives Spotify Streaming Behavior?",
+    "section": "Average Listening Duration",
+    "text": "Average Listening Duration"
+  },
+  {
+    "objectID": "index.html#marketing-insight-1",
+    "href": "index.html#marketing-insight-1",
+    "title": "What Drives Spotify Streaming Behavior?",
+    "section": "Marketing Insight 1",
+    "text": "Marketing Insight 1\nNew releases can drive repeat listening\nSongs with high stream counts suggest concentrated fan attention.\nRecommendation:\n\nPush promotional content shortly after release\nUse short-form video and playlist placement\nEncourage repeat listening through fan campaigns"
+  },
+  {
+    "objectID": "index.html#marketing-insight-2",
+    "href": "index.html#marketing-insight-2",
+    "title": "What Drives Spotify Streaming Behavior?",
+    "section": "Marketing Insight 2",
+    "text": "Marketing Insight 2\nEngagement is different from popularity\nTotal listening hours reveal deeper engagement.\nRecommendation:\n\nPromote songs with long listening duration\nUse high-engagement tracks in playlists\nConsider these songs for live performances or fan content"
+  },
+  {
+    "objectID": "index.html#marketing-insight-3",
+    "href": "index.html#marketing-insight-3",
+    "title": "What Drives Spotify Streaming Behavior?",
+    "section": "Marketing Insight 3",
+    "text": "Marketing Insight 3\nTiming matters\nListening behavior varies by day and hour.\nRecommendation:\n\nSchedule announcements during high-activity windows\nRelease reminders when listeners are already active\nUse time-based targeting for social media campaigns"
+  },
+  {
+    "objectID": "index.html#business-implications",
+    "href": "index.html#business-implications",
+    "title": "What Drives Spotify Streaming Behavior?",
+    "section": "Business Implications",
+    "text": "Business Implications\nFor music marketers, streaming data can support:\n\nRelease timing decisions\nPlaylist strategy\nFan engagement campaigns\nAlbum promotion\nContent scheduling\n\nThe main value is turning listening behavior into marketing action."
+  },
+  {
+    "objectID": "index.html#limitations",
+    "href": "index.html#limitations",
+    "title": "What Drives Spotify Streaming Behavior?",
+    "section": "Limitations",
+    "text": "Limitations\nThis dataset is anonymized and focused on Stray Kids streaming behavior.\nLimitations include:\n\nNo demographic information\nNo user-level identity\nLimited time window\nCannot directly measure why listeners choose a song\n\nFuture analysis could include:\n\nLonger time periods\nMultiple artists\nPlaylist source data\nUser demographic segments"
+  },
+  {
+    "objectID": "index.html#conclusion",
+    "href": "index.html#conclusion",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "Conclusion",
+    "text": "Conclusion\nKey Takeaway\nSteam discounts appear to meaningfully increase player engagement in the short run.\nMatched DID helps separate the discount effect from pre-existing game popularity.\nFinal point\nDiscounts should be evaluated not only by revenue impact, but also by their ability to reactivate players and increase platform engagement."
+  },
+  {
+    "objectID": "index.html#thank-you",
+    "href": "index.html#thank-you",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "Thank You",
+    "text": "Thank You"
+  },
+  {
+    "objectID": "index.html#when-do-listeners-stream",
+    "href": "index.html#when-do-listeners-stream",
+    "title": "Spotify Streaming Behavior",
+    "section": "When Do Listeners Stream?",
+    "text": "When Do Listeners Stream?\n\nInsight: Listening follows predictable daily patterns."
+  },
+  {
+    "objectID": "index.html#marketing-recommendations",
+    "href": "index.html#marketing-recommendations",
+    "title": "Spotify Streaming Behavior",
+    "section": "Marketing Recommendations",
+    "text": "Marketing Recommendations\n\nPromote new releases immediately.\nTrack engagement, not only streams.\nSchedule campaigns during peak listening hours."
+  },
+  {
+    "objectID": "index.html#engagement",
+    "href": "index.html#engagement",
+    "title": "Spotify Streaming Behavior",
+    "section": "Engagement",
+    "text": "Engagement\n\nInsight: Engagement measures attention, not just popularity."
+  },
+  {
+    "objectID": "index.html#popularity-vs-engagement",
+    "href": "index.html#popularity-vs-engagement",
+    "title": "Spotify Streaming Behavior",
+    "section": "Popularity vs Engagement",
+    "text": "Popularity vs Engagement\nPopularity\nStreams\nMeasures how often listeners return.\nEngagement\nListening Time\nMeasures how much attention listeners give.\nKey Finding\nThe most popular songs are not always the most engaging."
+  },
+  {
+    "objectID": "index.html#business-problem",
+    "href": "index.html#business-problem",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Business Problem",
+    "text": "Business Problem\nShould music labels focus on new releases or older catalog songs?\nMusic marketers have limited promotional resources.\nThey need to decide whether to:\n\nPush newly released songs\nContinue promoting older catalog tracks\nBalance both strategies\n\nResearch Question\nDo new releases drive disproportionate listener engagement?"
+  },
+  {
+    "objectID": "index.html#hypothesis",
+    "href": "index.html#hypothesis",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Hypothesis",
+    "text": "Hypothesis\nH1: New releases generate higher engagement.\nWhy this might happen:\n\nFans are more excited after new music drops\nNew songs receive more social media attention\nStreaming campaigns often focus on recent releases\nNew releases may create repeated listening behavior\n\nTest\nCompare new releases with catalog music."
+  },
+  {
+    "objectID": "index.html#new-releases-vs.-catalog-music",
+    "href": "index.html#new-releases-vs.-catalog-music",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "New Releases vs. Catalog Music",
+    "text": "New Releases vs. Catalog Music\n\nInsight\nThis shows whether newer music receives more total streaming activity than older catalog songs."
+  },
+  {
+    "objectID": "index.html#engagement-by-listening-hours",
+    "href": "index.html#engagement-by-listening-hours",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Engagement by Listening Hours",
+    "text": "Engagement by Listening Hours\n\nInsight\nListening hours measure deeper engagement, not just repeated plays."
+  },
+  {
+    "objectID": "index.html#disproportionate-attention",
+    "href": "index.html#disproportionate-attention",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Disproportionate Attention",
+    "text": "Disproportionate Attention\n\nKey idea\nIf new releases represent a smaller share of songs but a larger share of streams or hours, then listener attention is disproportionately concentrated on new music."
+  },
+  {
+    "objectID": "index.html#attention-concentration",
+    "href": "index.html#attention-concentration",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Attention Concentration",
+    "text": "Attention Concentration\n\nMarketing insight: Fan attention is not evenly distributed across songs. A small number of tracks drive a large share of streams."
+  },
+  {
+    "objectID": "index.html#top-tracks-as-demand-signals",
+    "href": "index.html#top-tracks-as-demand-signals",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Top Tracks as Demand Signals",
+    "text": "Top Tracks as Demand Signals\n\nMarketing meaning\nTop tracks act as demand signals.\nThey show where fans are already concentrating attention."
+  },
+  {
+    "objectID": "index.html#marketing-recommendation-1",
+    "href": "index.html#marketing-recommendation-1",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Marketing Recommendation 1",
+    "text": "Marketing Recommendation 1\nPrioritize new releases\nIf new releases receive a larger share of listening activity, labels should concentrate promotional effort around release windows.\nRecommended actions:\n\nStrong first-week campaigns\nPlaylist pitching\nShort-form video promotion\nFan streaming events"
+  },
+  {
+    "objectID": "index.html#marketing-recommendation-2",
+    "href": "index.html#marketing-recommendation-2",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Marketing Recommendation 2",
+    "text": "Marketing Recommendation 2\nDo not promote every song equally\nAttention is usually concentrated among a small number of songs.\nRecommended actions:\n\nIdentify early high-performing tracks\nShift budget toward songs with strong demand signals\nUse weaker tracks for album depth, not primary promotion"
+  },
+  {
+    "objectID": "index.html#marketing-recommendation-3",
+    "href": "index.html#marketing-recommendation-3",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Marketing Recommendation 3",
+    "text": "Marketing Recommendation 3\nKeep catalog music as long-term support\nOlder songs may still matter, but their role is different.\nCatalog music can support:\n\nLong-term fan retention\nDiscovery by new listeners\nPlaylist stability\nArtist identity and nostalgia"
+  },
+  {
+    "objectID": "index.html#strategic-conclusion",
+    "href": "index.html#strategic-conclusion",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Strategic Conclusion",
+    "text": "Strategic Conclusion\nMain finding\nNew music is likely to drive stronger short-term fan engagement, while catalog music supports long-term listening.\nBusiness implication\nMusic marketers should use a two-part strategy:\n\nFocus most promotional resources on new releases.\nMaintain selective catalog promotion for long-term engagement."
+  },
+  {
+    "objectID": "index.html#final-takeaway",
+    "href": "index.html#final-takeaway",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Final Takeaway",
+    "text": "Final Takeaway\nStreaming data turns fan behavior into marketing strategy.\nThe key question is not only:\nWhat do fans listen to?\nThe deeper question is:\nWhere should marketers invest attention and budget?"
+  },
+  {
+    "objectID": "index.html#business-question",
+    "href": "index.html#business-question",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "Business Question",
+    "text": "Business Question\nDo Steam discounts increase player engagement?\nSteam discounts are a major marketing tool.\nThe key question is:\nDo discounts actually increase player activity, or are discounted games already more popular?"
+  },
+  {
+    "objectID": "index.html#hypothesis-and-model",
+    "href": "index.html#hypothesis-and-model",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Hypothesis and Model",
+    "text": "Hypothesis and Model\nHypothesis\nNewer songs generate higher engagement.\nEngagement is measured at the song level using total listening hours.\nModel\n\\[\n\\log(1 + Engagement_i) =\n\\beta_0 + \\beta_1 SongAge_i + \\beta_2 AlbumType_i + \\epsilon_i\n\\]\nWhere:\n\nEngagement = total listening hours per song\nSong Age = 2025 minus release year\nAlbum Type controls for single, album, mixtape, etc."
+  },
+  {
+    "objectID": "index.html#descriptive-evidence",
+    "href": "index.html#descriptive-evidence",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Descriptive Evidence",
+    "text": "Descriptive Evidence\n\nInitial pattern: Newer music appears to capture a large share of listener attention."
+  },
+  {
+    "objectID": "index.html#regression-results",
+    "href": "index.html#regression-results",
+    "title": "Does New Music Drive Fan Engagement?",
+    "section": "Regression Results",
+    "text": "Regression Results\n\nModel Output\n\nSong age coefficient: -0.199\np-value: 0\nR-squared: 0.494\n\nInterpretation: A negative coefficient means older songs tend to receive lower engagement."
+  },
+  {
+    "objectID": "index.html#marketing-implications",
+    "href": "index.html#marketing-implications",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "Marketing Implications",
+    "text": "Marketing Implications\nRecommendation 1\nUse discounts as an engagement tool, not only a sales tool.\nRecommendation 2\nPrioritize discounts for games with an existing player base that can be reactivated.\nRecommendation 3\nCoordinate discounts with marketing campaigns, content updates, or community events to maximize engagement."
+  },
+  {
+    "objectID": "index.html#method-psm-did",
+    "href": "index.html#method-psm-did",
+    "title": "Does Premium+ Drive Higher Engagement?",
+    "section": "Method: PSM + DID",
+    "text": "Method: PSM + DID\nStep 1: Propensity Score Matching\nPremium+ users are matched with similar non-Premium+ users based on:\n\nAge\nGender\nCountry\nMonthly spend\nPrimary device\nHousehold size\n\nStep 2: Difference-in-Differences\nAfter matching, I compare engagement before vs. after subscription start.\n\\[\nEngagement_{it} = \\beta_0 + \\beta_1 PremiumPlus_i +\n\\beta_2 Post_t + \\beta_3(PremiumPlus_i \\times Post_t) + \\epsilon_{it}\n\\]\nKey estimate: \\(\\beta_3\\)"
+  },
+  {
+    "objectID": "index.html#matched-sample",
+    "href": "index.html#matched-sample",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "Matched Sample",
+    "text": "Matched Sample\n\n\n\n11\n\nMatched pairs\n\n\n22\n\nGames\n\n\n29\n\nDays"
+  },
+  {
+    "objectID": "index.html#matching-quality",
+    "href": "index.html#matching-quality",
+    "title": "Does Premium+ Drive Higher Engagement?",
+    "section": "Matching Quality",
+    "text": "Matching Quality\n\nInterpretation\nAfter matching, Premium+ and control users should have more similar predicted probabilities of choosing Premium+."
+  },
+  {
+    "objectID": "index.html#did-result",
+    "href": "index.html#did-result",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "DID Result",
+    "text": "DID Result\n\nEstimated Effect\n\nRaw DID effect: 402.2 players\nRegression DID effect: 64.6%\np-value: &lt;0.001"
+  },
+  {
+    "objectID": "index.html#interpretation-1",
+    "href": "index.html#interpretation-1",
+    "title": "Does Premium+ Drive Higher Engagement?",
+    "section": "Interpretation",
+    "text": "Interpretation\nIf the DID estimate is positive:\n\nPremium+ users increased engagement more than similar non-Premium+ users after subscription start.\n\nIf the DID estimate is small or insignificant:\n\nPremium+ may not meaningfully increase engagement after accounting for selection bias.\n\nImportant caveat\nThis is observational data, not a randomized experiment.\nPSM + DID reduces selection bias, but it does not prove causality unless the parallel trends assumption is credible."
+  },
+  {
+    "objectID": "index.html#marketing-recommendation",
+    "href": "index.html#marketing-recommendation",
+    "title": "Does Premium+ Drive Higher Engagement?",
+    "section": "Marketing Recommendation",
+    "text": "Marketing Recommendation\nIf Premium+ effect is positive\n\nPromote Premium+ to users similar to the matched high-potential group\nEmphasize features that increase viewing time\nUse targeted upgrade campaigns\n\nIf Premium+ effect is weak\n\nPremium+ may be monetizing already-engaged users rather than creating new engagement\nFocus on improving product features before pushing upgrades\nUse retention campaigns for users with declining watch behavior"
+  },
+  {
+    "objectID": "index.html#empirical-strategy",
+    "href": "index.html#empirical-strategy",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "Empirical Strategy",
+    "text": "Empirical Strategy\nMatched Difference-in-Differences\nI compare discounted games with similar non-discounted games.\n\n\nTreatment\nGames discounted on 2019-06-25\n\nControl\nSimilar games not discounted during the same window\n\nGames are matched based on pre-discount average player count."
+  },
+  {
+    "objectID": "index.html#did-design",
+    "href": "index.html#did-design",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "DID Design",
+    "text": "DID Design\n\\[\n\\log(Players_{it}) =\n\\beta_0 +\n\\beta_1 Discounted_i +\n\\beta_2 Post_t +\n\\beta_3(Discounted_i \\times Post_t)\n+ \\epsilon_{it}\n\\]\nKey estimate\n\\(\\beta_3\\) measures the additional change in player engagement for discounted games after the discount event.\nThe model includes:\n\nMatched-pair fixed effects\nRelative-day fixed effects"
+  },
+  {
+    "objectID": "index.html#parallel-trends-check",
+    "href": "index.html#parallel-trends-check",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "Parallel Trends Check",
+    "text": "Parallel Trends Check"
+  },
+  {
+    "objectID": "index.html#interpretation",
+    "href": "index.html#interpretation",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "Interpretation",
+    "text": "Interpretation\nMain finding\nDiscounted games experienced a significantly larger increase in player activity than comparable non-discounted games.\nEvidence\n\nPlayer activity increased for discounted games after the discount event.\nPlayer activity declined for the matched control games.\nThe regression DID estimate is 64.6% with p-value &lt;0.001.\n\nConclusion\nThe results suggest that Steam discounts are associated with a substantial increase in player engagement."
+  },
+  {
+    "objectID": "index.html#matched-sample-check",
+    "href": "index.html#matched-sample-check",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "Matched Sample Check",
+    "text": "Matched Sample Check\n\n\n\n11\n\nDiscounted games\n\n\n11\n\nControl games\n\n\n11\n\nMatched pairs\n\n\n29\n\nDays\n\n\n\nDiscounted games\n\nCounter-StrikeMonacoHalf-Life: Blue ShiftHalf-Life 2Counter-Strike: SourceTeslagradTurbo DismountPanzer CorpsHero SiegeThe RoomTotal War: SHOGUN 2\n\n\nControl games\n\nThe Elder Scrolls V: SkyrimWWE 2K16Richie’s Plank ExperienceMy Summer CarNBA 2K18DivekickSword With Sauce: AlphaNBA 2K17Discord Bot MakerLEGO� Pirates of the Caribbean The Video GameFactorio"
+  },
+  {
+    "objectID": "index.html#conclusion-1",
+    "href": "index.html#conclusion-1",
+    "title": "Do Steam Discounts Increase Player Engagement?",
+    "section": "Conclusion",
+    "text": "Conclusion\nKey Takeaway\nSteam discounts appear to meaningfully increase player engagement in the short run.\nMatched DID helps separate the discount effect from pre-existing game popularity.\nFinal point\nDiscounts should be evaluated not only by revenue impact, but also by their ability to reactivate players and increase platform engagement."
+  }
+]
