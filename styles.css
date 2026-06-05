@@ -1,0 +1,25 @@
+h1, h2 {
+  color: #1e3a8a;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.7;
+}
+
+a {
+  color: #7c3aed;
+}
+
+.navbar {
+  font-weight: 600;
+}
+.center-slide {
+  text-align: center;
+  margin-top: 15vh;
+}
+
+.center-slide h1 {
+  font-size: 8rem;
+  color: #1e3a8a;
+}

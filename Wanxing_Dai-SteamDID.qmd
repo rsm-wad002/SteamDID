@@ -1,0 +1,503 @@
+---
+title: "Do Steam Discounts Increase Player Engagement?"
+subtitle: "A Difference-in-Differences Analysis"
+author: "Wanxing Dai"
+
+format:
+  revealjs:
+    embed-resources: true
+    theme: simple
+    slide-number: true
+    transition: fade
+    include-in-header:
+      text: |
+        <style>
+        .reveal h1, .reveal h2 { color: #1b4f9c; }
+        .reveal strong { color: #1b4f9c; }
+        .reveal section { font-size: 0.82em; }
+
+        .big-number {
+          font-size: 2em;
+          font-weight: bold;
+          color: #1b4f9c;
+        }
+
+        .small-text {
+          font-size: 0.62em;
+          line-height: 1.25;
+        }
+
+        .reveal section.thank-you-slide h2 {
+          font-size: 6rem !important;
+          text-align: center !important;
+          margin-top: 18vh !important;
+          color: #1b4f9c !important;
+        }
+        </style>
+
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+```{r}
+price_dir <- "PriceHistory"
+player_dir <- "PlayerCountHistoryPart1"
+
+discount_games <- read.csv("discount_games_appids.csv", stringsAsFactors = FALSE)
+discount_games$appid <- as.character(discount_games$appid)
+
+app_info <- read.csv("applicationInformation.csv", stringsAsFactors = FALSE, check.names = FALSE)
+app_info$appid <- as.character(app_info$appid)
+
+get_game_name <- function(ids) {
+  out <- app_info$name[match(ids, app_info$appid)]
+  out[is.na(out) | out == ""] <- ids[is.na(out) | out == ""]
+  out
+}
+
+get_file_path <- function(folder, appid) {
+  possible <- c(file.path(folder, paste0(appid, ".csv")), file.path(folder, appid))
+  existing <- possible[file.exists(possible)]
+  if (length(existing) == 0) return(NA)
+  existing[1]
+}
+
+read_players <- function(appid) {
+  f <- get_file_path(player_dir, appid)
+  if (is.na(f)) return(NULL)
+
+  df <- read.csv(f, stringsAsFactors = FALSE, check.names = FALSE)
+
+  if (!all(c("Time", "Playercount") %in% names(df))) return(NULL)
+
+  out <- data.frame(
+    appid = appid,
+    date = as.Date(as.POSIXct(df$Time, format = "%Y-%m-%d %H:%M", tz = "UTC")),
+    player_count = as.numeric(df$Playercount)
+  )
+
+  out <- out[!is.na(out$date) & !is.na(out$player_count), ]
+  aggregate(player_count ~ appid + date, data = out, FUN = mean)
+}
+
+event_date <- as.Date("2019-06-25")
+window_days <- 14
+start_date <- event_date - window_days
+end_date <- event_date + window_days
+
+treated_ids <- unique(discount_games$appid[
+  as.Date(discount_games$first_discount_date) == event_date
+])
+
+treated_candidates <- discount_games[discount_games$appid %in% treated_ids, ]
+treated_candidates <- treated_candidates[order(-treated_candidates$max_discount), ]
+treated_ids <- head(treated_candidates$appid, 20)
+
+price_files <- list.files(price_dir, pattern = "\\.csv$", full.names = TRUE, recursive = TRUE)
+player_files <- list.files(player_dir, pattern = "\\.csv$", full.names = TRUE, recursive = TRUE)
+
+price_ids <- tools::file_path_sans_ext(basename(price_files))
+player_ids <- tools::file_path_sans_ext(basename(player_files))
+
+common_ids <- intersect(price_ids, player_ids)
+control_pool <- setdiff(common_ids, discount_games$appid)
+
+panel_treated <- data.frame()
+
+for (appid in treated_ids) {
+  players <- tryCatch(read_players(appid), error = function(e) NULL)
+  if (is.null(players)) next
+
+  players <- players[players$date >= start_date & players$date <= end_date, ]
+  if (nrow(players) == 0) next
+
+  players$treated <- 1
+  players$relative_day <- as.numeric(players$date - event_date)
+  players$post <- ifelse(players$date >= event_date, 1, 0)
+
+  if (sum(players$post == 0) >= 7 & sum(players$post == 1) >= 7) {
+    panel_treated <- rbind(panel_treated, players)
+  }
+}
+
+control_panel <- data.frame()
+max_controls_to_scan <- min(length(control_pool), 1000)
+
+for (appid in control_pool[1:max_controls_to_scan]) {
+  players <- tryCatch(read_players(appid), error = function(e) NULL)
+  if (is.null(players)) next
+
+  players <- players[players$date >= start_date & players$date <= end_date, ]
+  if (nrow(players) == 0) next
+
+  players$treated <- 0
+  players$relative_day <- as.numeric(players$date - event_date)
+  players$post <- ifelse(players$date >= event_date, 1, 0)
+
+  if (sum(players$post == 0) >= 7 & sum(players$post == 1) >= 7) {
+    control_panel <- rbind(control_panel, players)
+  }
+}
+
+if (nrow(panel_treated) == 0) stop("No treated player data found.")
+if (nrow(control_panel) == 0) stop("No control player data found.")
+
+treated_meta <- aggregate(
+  player_count ~ appid,
+  data = panel_treated[panel_treated$post == 0, ],
+  FUN = mean
+)
+
+control_meta <- aggregate(
+  player_count ~ appid,
+  data = control_panel[control_panel$post == 0, ],
+  FUN = mean
+)
+
+names(treated_meta)[2] <- "pre_players"
+names(control_meta)[2] <- "pre_players"
+
+matched_pairs <- data.frame()
+used_controls <- character(0)
+
+for (i in seq_len(nrow(treated_meta))) {
+  t <- treated_meta[i, ]
+  available <- control_meta[!(control_meta$appid %in% used_controls), ]
+  if (nrow(available) == 0) break
+
+  distance <- abs(log1p(available$pre_players) - log1p(t$pre_players))
+  best <- available[which.min(distance), ]
+
+  matched_pairs <- rbind(
+    matched_pairs,
+    data.frame(
+      pair_id = i,
+      treated_appid = t$appid,
+      control_appid = best$appid,
+      treated_pre_players = t$pre_players,
+      control_pre_players = best$pre_players,
+      pre_difference = t$pre_players - best$pre_players
+    )
+  )
+
+  used_controls <- c(used_controls, best$appid)
+}
+
+matched_pairs$treated_name <- get_game_name(matched_pairs$treated_appid)
+matched_pairs$control_name <- get_game_name(matched_pairs$control_appid)
+
+matched_ids <- c(matched_pairs$treated_appid, matched_pairs$control_appid)
+
+panel_all <- rbind(panel_treated, control_panel)
+panel_all <- panel_all[panel_all$appid %in% matched_ids, ]
+
+panel_all$pair_id <- NA
+
+for (i in seq_len(nrow(matched_pairs))) {
+  panel_all$pair_id[panel_all$appid == matched_pairs$treated_appid[i]] <- matched_pairs$pair_id[i]
+  panel_all$pair_id[panel_all$appid == matched_pairs$control_appid[i]] <- matched_pairs$pair_id[i]
+}
+
+panel_all <- panel_all[!is.na(panel_all$pair_id), ]
+panel_all$log_players <- log1p(panel_all$player_count)
+
+did_model <- lm(
+  log_players ~ treated * post + factor(pair_id) + factor(relative_day),
+  data = panel_all
+)
+
+did_result <- summary(did_model)
+
+did_coef <- coef(did_result)["treated:post", "Estimate"]
+did_p <- coef(did_result)["treated:post", "Pr(>|t|)"]
+did_percent <- (exp(did_coef) - 1) * 100
+
+raw_means <- aggregate(
+  player_count ~ treated + post,
+  data = panel_all,
+  FUN = mean
+)
+
+raw_wide <- reshape(
+  raw_means,
+  idvar = "treated",
+  timevar = "post",
+  direction = "wide"
+)
+
+names(raw_wide) <- c("treated", "before", "after")
+raw_wide$change <- raw_wide$after - raw_wide$before
+
+raw_did <- raw_wide$change[raw_wide$treated == 1] -
+  raw_wide$change[raw_wide$treated == 0]
+
+control_before <- raw_wide$before[raw_wide$treated == 0]
+control_after  <- raw_wide$after[raw_wide$treated == 0]
+treat_before   <- raw_wide$before[raw_wide$treated == 1]
+treat_after    <- raw_wide$after[raw_wide$treated == 1]
+
+n_pairs <- length(unique(panel_all$pair_id))
+n_days <- length(unique(panel_all$date))
+
+n_treated_games <- length(unique(panel_all$appid[panel_all$treated == 1]))
+n_control_games <- length(unique(panel_all$appid[panel_all$treated == 0]))
+
+treated_game_list <- paste(matched_pairs$treated_name, collapse = "<br>")
+control_game_list <- paste(matched_pairs$control_name, collapse = "<br>")
+```
+
+## Business Question
+
+### Do Steam discounts increase player engagement?
+
+Steam discounts are a major marketing tool.
+
+The key question is:
+
+**Do discounts actually increase player activity, or are discounted games already more popular?**
+
+---
+
+## Empirical Strategy
+
+### Matched Difference-in-Differences
+
+I compare discounted games with similar non-discounted games.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### Treatment
+
+Games discounted on **`r event_date`**
+
+:::
+
+::: {.column width="50%"}
+
+### Control
+
+Similar games not discounted during the same window
+
+:::
+
+::::
+
+Games are matched based on pre-discount average player count.
+
+---
+
+## Matched Sample Check
+
+:::: {.columns}
+
+::: {.column width="25%"}
+
+<div class="big-number">`r n_treated_games`</div>
+
+Discounted games
+
+:::
+
+::: {.column width="25%"}
+
+<div class="big-number">`r n_control_games`</div>
+
+Control games
+
+:::
+
+::: {.column width="25%"}
+
+<div class="big-number">`r n_pairs`</div>
+
+Matched pairs
+
+:::
+
+::: {.column width="25%"}
+
+<div class="big-number">`r n_days`</div>
+
+Days
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### Discounted games
+
+<div class="small-text">
+`r treated_game_list`
+</div>
+
+:::
+
+::: {.column width="50%"}
+
+### Control games
+
+<div class="small-text">
+`r control_game_list`
+</div>
+
+:::
+
+::::
+
+---
+
+## DID Design
+
+$$
+\log(Players_{it}) =
+\beta_0 +
+\beta_1 Discounted_i +
+\beta_2 Post_t +
+\beta_3(Discounted_i \times Post_t)
++ \epsilon_{it}
+$$
+
+### Key estimate
+
+**$\beta_3$** measures the additional change in player engagement for discounted games after the discount event.
+
+The model includes:
+
+- Matched-pair fixed effects
+- Relative-day fixed effects
+
+---
+
+## Parallel Trends Check
+
+```{r, fig.width=9, fig.height=4.5}
+trend <- aggregate(
+  player_count ~ treated + relative_day,
+  data = panel_all,
+  FUN = mean
+)
+
+control_trend <- trend[trend$treated == 0, ]
+treated_trend <- trend[trend$treated == 1, ]
+
+ylim_range <- range(trend$player_count, na.rm = TRUE)
+
+plot(
+  control_trend$relative_day,
+  control_trend$player_count,
+  type = "l",
+  lwd = 3,
+  ylim = ylim_range,
+  xlab = "Days Relative to Discount Event",
+  ylab = "Average Player Count",
+  main = "Player Count Trends Around Discount Event"
+)
+
+lines(
+  treated_trend$relative_day,
+  treated_trend$player_count,
+  lwd = 3,
+  lty = 2
+)
+
+abline(v = 0, lty = 3)
+
+legend(
+  "topleft",
+  legend = c("Control", "Discounted"),
+  lwd = 3,
+  lty = c(1, 2),
+  bty = "n"
+)
+```
+
+---
+
+## DID Result
+
+```{r, fig.width=9, fig.height=4.5}
+ylim_range <- range(
+  c(control_before, control_after, treat_before, treat_after),
+  na.rm = TRUE
+)
+
+plot(
+  c(1, 2),
+  c(control_before, control_after),
+  type = "b",
+  lwd = 3,
+  pch = 19,
+  ylim = ylim_range,
+  xaxt = "n",
+  xlab = "",
+  ylab = "Average Player Count",
+  main = "Before vs. After Discount Event"
+)
+
+lines(
+  c(1, 2),
+  c(treat_before, treat_after),
+  type = "b",
+  lwd = 3,
+  lty = 2,
+  pch = 19
+)
+
+axis(1, at = c(1, 2), labels = c("Before", "After"))
+
+legend(
+  "topleft",
+  legend = c("Control", "Discounted"),
+  lwd = 3,
+  lty = c(1, 2),
+  pch = 19,
+  bty = "n"
+)
+```
+
+### Estimated Effect
+
+- Raw DID effect: **`r round(raw_did, 1)` players**
+- Regression DID effect: **`r round(did_percent, 1)`%**
+- p-value: **`r format.pval(did_p, digits = 3, eps = 0.001)`**
+
+---
+
+## Marketing Implications
+
+### Recommendation 1
+
+Use discounts as an engagement tool, not only a sales tool.
+
+### Recommendation 2
+
+Prioritize discounts for games with an existing player base that can be reactivated.
+
+### Recommendation 3
+
+Coordinate discounts with marketing campaigns, content updates, or community events to maximize engagement.
+
+---
+
+## Conclusion
+
+### Key Takeaway
+
+Steam discounts appear to meaningfully increase player engagement in the short run.
+
+Matched DID helps separate the discount effect from pre-existing game popularity.
+
+### Final point
+
+Discounts should be evaluated not only by revenue impact, but also by their ability to reactivate players and increase platform engagement.
+
+---
+
+## Thank You {.thank-you-slide}

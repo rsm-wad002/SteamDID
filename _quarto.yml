@@ -1,0 +1,10 @@
+project:
+  type: website
+
+website:
+  title: "My Quarto Site"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
